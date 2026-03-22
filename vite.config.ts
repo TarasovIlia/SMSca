@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
-import solidPlugin from 'vite-plugin-solid';
-import devtools from 'solid-devtools/vite';
-import path from "path"
- import solid from 'vite-plugin-solid';
+import { defineConfig } from 'vite'
+import solidPlugin from 'vite-plugin-solid'
+import devtools from 'solid-devtools/vite'
+import path from 'path'
+import solid from 'vite-plugin-solid'
 
 export default defineConfig({
   plugins: [devtools(), solidPlugin(), solid()],
@@ -14,7 +14,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "~": path.resolve(__dirname, "./src")
-    }
-  }
-});
+      '~': path.resolve(__dirname, './src'),
+    },
+  },
+})
