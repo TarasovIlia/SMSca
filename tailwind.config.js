@@ -63,6 +63,15 @@ export default {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      boxShadow: {
+        surface: 'var(--shadow-surface)',
+        elevated: 'var(--shadow-elevated)',
+        overlay: 'var(--shadow-overlay)',
+        container: 'var(--shadow-container)',
+      },
+      backgroundImage: {
+        page: 'var(--gradient-page)',
+      },
       borderRadius: {
         xl: 'calc(var(--radius) + 4px)',
         lg: 'var(--radius)',
