@@ -1,9 +1,5 @@
 import { Button } from '~/components/ui/button'
-import {
-  TextField,
-  TextFieldInput,
-  TextFieldLabel,
-} from '~/components/ui/text-field'
+import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field'
 
 export default () => {
   return (
