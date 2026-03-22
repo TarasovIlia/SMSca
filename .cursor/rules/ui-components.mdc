@@ -30,3 +30,34 @@ import { Badge } from '~/shared/ui/badge'
 
 <Badge variant="default" class={cn('mt-1')}>New</Badge>
 ```
+
+## Design Token Usage
+
+Always use theme tokens — never hardcode raw colors, shadows, or gradients.
+
+**Lookup order:**
+1. Check `tailwind.config.js` (`theme.extend`) for an existing token.
+2. Check `src/app/styles/index.css` (`:root` / `.dark`) for an existing CSS variable.
+3. If nothing fits, **add** a new CSS variable in `index.css` **and** expose it in `tailwind.config.js`, then use the new token.
+
+### Available tokens
+
+| Category | Tailwind class examples | CSS variable |
+|---|---|---|
+| Colors | `bg-primary`, `text-muted-foreground`, `border-border`, `bg-card`, `bg-accent`, `text-destructive`, `bg-info`, `bg-success`, `bg-warning`, `bg-error` | `--primary`, `--muted-foreground`, … |
+| Shadows | `shadow-surface`, `shadow-elevated`, `shadow-overlay`, `shadow-container` | `--shadow-surface`, … |
+| Gradients | `bg-page` | `--gradient-page` |
+| Radius | `rounded-sm`, `rounded-md`, `rounded-lg`, `rounded-xl` | `--radius` |
+
+```tsx
+// ❌ BAD — hardcoded values bypass the theme
+<div style={{ background: 'linear-gradient(143deg, #f8fafc, #f1f5f9)', boxShadow: '0 4px 6px rgb(0 0 0 / .1)' }} />
+
+// ✅ GOOD — uses existing theme tokens
+<div class="bg-page shadow-elevated" />
+
+// ✅ GOOD — no existing token → add one first, then use it
+// 1. src/app/styles/index.css  →  --gradient-hero: linear-gradient(...);
+// 2. tailwind.config.js        →  backgroundImage: { hero: 'var(--gradient-hero)' }
+// 3. JSX                       →  <div class="bg-hero" />
+```
