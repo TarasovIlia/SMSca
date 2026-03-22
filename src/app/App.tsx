@@ -1,14 +1,9 @@
 import type { Component } from 'solid-js'
 
-import { HomePage } from '~/pages/home'
+import { AuthPage } from '~/pages/auth'
 
 const App: Component = () => {
-  return (
-    <>
-      <h1>Hello world!!!!</h1>
-      <HomePage />
-    </>
-  )
+  return <AuthPage />
 }
 
 export default App
