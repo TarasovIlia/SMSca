@@ -13,7 +13,6 @@ export const COINS: CoinMeta[] = [
   { id: 'polkadot', name: 'Polkadot', symbol: 'DOT', icon: '●' },
   { id: 'chainlink', name: 'Chainlink', symbol: 'LINK', icon: '⬡' },
   { id: 'avalanche-2', name: 'Avalanche', symbol: 'AVAX', icon: '▲' },
-  { id: 'matic-network', name: 'Polygon', symbol: 'MATIC', icon: '⬟' },
   { id: 'ripple', name: 'Ripple', symbol: 'XRP', icon: '✕' },
 ]
 
