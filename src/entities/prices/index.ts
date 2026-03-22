@@ -1,3 +1,6 @@
 export { prices, setPrices } from './model/prices'
 export type { CoinPrice, PricesMap } from './model/prices'
 export { fetchPrices } from './api/fetchPrices'
+export type { MockCoin } from './model/mock'
+export { MOCK_COINS } from './model/mock'
+export { CoinPriceCard } from './ui/CoinPriceCard'

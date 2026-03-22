@@ -1,14 +1,21 @@
-import { Button } from '~/shared/ui'
-import { TextField, TextFieldInput, TextFieldLabel } from '~/shared/ui'
+import { For } from 'solid-js'
 
-export const HomePage = () => {
-  return (
-    <div class='flex flex-col items-center gap-6 p-7 md:flex-row md:gap-8 rounded-2xl shadow-xl'>
-      <Button variant='ghost'>hello</Button>
-      <TextField class='grid w-full max-w-sm items-center gap-1.5'>
-        <TextFieldLabel for='email'>Email</TextFieldLabel>
-        <TextFieldInput type='email' id='email' placeholder='Email' />
-      </TextField>
-    </div>
-  )
-}
+import { CoinPriceCard, MOCK_COINS } from '~/entities/prices'
+import { DashboardHeader } from '~/widgets/dashboard-header'
+
+export const HomePage = () => (
+  <div class='min-h-screen bg-page'>
+    <DashboardHeader />
+    <main class='px-8 py-8'>
+      <div class='mb-6 flex flex-col gap-1'>
+        <h1 class='text-[28px] font-semibold leading-[42px] text-foreground'>Cryptocurrency Prices</h1>
+        <p class='text-sm leading-[21px] text-muted-foreground'>
+          Real-time market prices. Hover over any card for detailed information.
+        </p>
+      </div>
+      <div class='grid grid-cols-1 gap-6 sm:grid-cols-2'>
+        <For each={MOCK_COINS}>{(coin) => <CoinPriceCard coin={coin} />}</For>
+      </div>
+    </main>
+  </div>
+)
