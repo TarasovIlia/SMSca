@@ -1,3 +1,7 @@
 export { WalletIcon } from './wallet-icon'
 export { EyeIcon } from './eye-icon'
 export { EyeOffIcon } from './eye-off-icon'
+export { BellIcon } from './bell-icon'
+export { SettingsIcon } from './settings-icon'
+export { TrendUpIcon } from './trend-up-icon'
+export { TrendDownIcon } from './trend-down-icon'

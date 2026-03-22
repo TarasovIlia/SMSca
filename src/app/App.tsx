@@ -1,9 +1,15 @@
 import type { Component } from 'solid-js'
 
-import { AuthPage } from '~/pages/auth'
+import { Route, Router } from '@solidjs/router'
 
-const App: Component = () => {
-  return <AuthPage />
-}
+import { AuthPage } from '~/pages/auth'
+import { HomePage } from '~/pages/home'
+
+const App: Component = () => (
+  <Router>
+    <Route path='/' component={AuthPage} />
+    <Route path='/home' component={HomePage} />
+  </Router>
+)
 
 export default App
