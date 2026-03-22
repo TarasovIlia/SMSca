@@ -5,10 +5,10 @@ import { TrendDownIcon, TrendUpIcon } from '~/shared/ui'
 import { Card, CardContent } from '~/shared/ui/card'
 import { Popover, PopoverContent, PopoverTrigger } from '~/shared/ui/popover'
 
-import type { MockCoin } from '../model/mock'
+import type { Coin } from '../lib/formatCoin'
 
 interface CoinPriceCardProps {
-  coin: MockCoin
+  coin: Coin
 }
 
 export const CoinPriceCard: Component<CoinPriceCardProps> = (props) => {
