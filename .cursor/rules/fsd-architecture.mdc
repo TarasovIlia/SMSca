@@ -1,0 +1,40 @@
+---
+description: Feature-Sliced Design architecture conventions
+alwaysApply: true
+---
+
+# Feature-Sliced Design (FSD)
+
+Structure all source code under `src/` using FSD layers, ordered from highest to lowest level of abstraction:
+
+```
+src/
+  app/        # App-wide setup: providers, global styles, routing root
+  pages/      # Full page compositions
+  widgets/    # Self-contained UI blocks composed from features/entities
+  features/   # User-facing interactions (e.g. auth-by-email, add-to-cart)
+  entities/   # Business domain objects (e.g. user, product, order)
+  shared/     # Reusable low-level code with no business logic
+    ui/        # Generic UI components (maps to current src/components/ui/)
+    lib/       # Utilities (maps to current src/lib/)
+    api/       # Base API client / request helpers
+    config/    # Env vars, constants
+```
+
+## Rules
+
+- **Imports only go downward**: a layer may only import from layers below it.
+  - `pages` → `widgets` → `features` → `entities` → `shared`
+  - Never import upward (e.g. `shared` must not import from `features`)
+- Each layer (except `app` and `shared`) is divided into **slices** (domain concepts).
+- Each slice exposes a single **public API** via its `index.ts`; never import from internal paths.
+
+```ts
+// ✅ GOOD
+import { UserCard } from '~/entities/user'
+
+// ❌ BAD — bypasses public API
+import { UserCard } from '~/entities/user/ui/UserCard'
+```
+
+- Slices contain **segments**: `ui/`, `model/`, `api/`, `lib/`, `config/`

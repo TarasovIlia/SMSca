@@ -1,0 +1,31 @@
+---
+description: Async/await patterns — no .then()/.catch() chains
+alwaysApply: true
+---
+
+# Async Code Style
+
+Always use `async/await`. Never use `.then()`, `.catch()`, or `.finally()` chains.
+
+```ts
+// ❌ BAD
+fetchUser(id)
+  .then((user) => setUser(user))
+  .catch((err) => console.error(err))
+
+// ✅ GOOD
+try {
+  const user = await fetchUser(id)
+  setUser(user)
+} catch (err) {
+  console.error(err)
+}
+```
+
+- Wrap `await` calls in `try/catch` — never swallow errors silently.
+- For concurrent independent calls use `Promise.all` with `await`, not chained `.then()`:
+
+```ts
+// ✅ GOOD
+const [user, orders] = await Promise.all([fetchUser(id), fetchOrders(id)])
+```

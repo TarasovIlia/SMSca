@@ -1,0 +1,50 @@
+---
+description: Core conventions for this SolidJS project
+alwaysApply: true
+---
+
+# Project Overview
+
+SolidJS + TypeScript + Vite app with Tailwind CSS. UI components are built on `@kobalte/core` primitives via `solid-ui`.
+
+## Stack
+
+- **Framework**: SolidJS (not React — use `class` not `className`, `classList` not `clsx` in JSX attributes where appropriate)
+- **Styling**: Tailwind CSS via `cn()` helper from `~/lib/utils`
+- **UI primitives**: `@kobalte/core` — access through `~/components/ui/` wrappers
+- **Variants**: `class-variance-authority` (CVA) for component variant definitions
+- **Path alias**: `~` resolves to `src/`
+
+## Conventions
+
+### Components
+
+- Functional components, no class components
+- Export default for page-level components; named exports for reusable components
+- Place shared UI components in `src/components/ui/`
+
+### Styling
+
+Always use `cn()` from `~/lib/utils` to merge classes:
+
+```tsx
+import { cn } from '~/lib/utils'
+
+<div class={cn('base-classes', props.class)} />
+```
+
+### Adding UI Components
+
+Use `solid-ui` CLI to add components (configured via `ui.config.json`):
+
+```bash
+npx shadcn-solid add <component>
+```
+
+Components land in `src/components/ui/`.
+
+### Solid-specific Patterns
+
+- Reactivity: use `createSignal`, `createMemo`, `createEffect` — not `useState`/`useEffect`
+- Avoid destructuring props directly; use `props.foo` or `splitProps` to preserve reactivity
+- Use `<Show>`, `<For>`, `<Switch>` control-flow components instead of ternaries/map where possible
